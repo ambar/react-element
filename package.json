@@ -13,7 +13,7 @@
     "test:coverage": "jest --coverage",
     "test:watch": "npm test -- --watch",
     "build": "rm -rf ./lib && NODE_ENV=production babel src --out-dir lib",
-    "prepublish": "npm run eslint && npm run build",
+    "prepublish": "npm run eslint && npm test && npm run build",
     "eslint": "eslint src"
   },
   "license": "MIT",
