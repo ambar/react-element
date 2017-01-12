@@ -74,7 +74,7 @@ const <Toggle> = ({popup, children: child}) => (
   </Element>
 )
 
-// 然后无论内外，属性都会传递，事件都会触发
+// 然后无论内外，属性都会传递，事件都会触发 —— 事件处理函数先定义先执行，属性后定义的覆盖先定义的（但 class 始终拼接起来）
 <Toggle popup={<Popover onOpen={} />}>
   <Button onClick={} />
 </Toggle>

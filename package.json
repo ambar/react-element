@@ -17,6 +17,7 @@
     "eslint": "eslint src"
   },
   "license": "MIT",
+  "keywords": ["react", "components", "cloneElement", "createElement"],
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-eslint": "^7.1.0",
