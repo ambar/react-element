@@ -1,6 +1,6 @@
 {
   "name": "react-element",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "😉",
   "main": "lib/Element.js",
   "module": "src/Element.js",
@@ -17,7 +17,12 @@
     "eslint": "eslint src"
   },
   "license": "MIT",
-  "keywords": ["react", "components", "cloneElement", "createElement"],
+  "keywords": [
+    "react",
+    "components",
+    "cloneElement",
+    "createElement"
+  ],
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-eslint": "^7.1.0",
