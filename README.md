@@ -36,7 +36,8 @@ import Element from 'react-element'
 如一个组件有 Item 和 ItemInner 两层结构，Item + Item 有并列样式，ItemInner 有 `padding`，需要替换外层的元素为链接时。
 
 ```js
-<ListItem component={Card} />
+// 一种组件两种特性
+<ListItem component={Link} />
 // 夸张的
 <ListItem component={<Card component={Link} />} />
 // 好玩的
@@ -64,6 +65,8 @@ const Tooltip = ({children: child}) => (
 
 ### 四、自动传播事件
 
+后定义属性覆盖先定义的（class 会始终连接起来），先定义的处理函数先执行：
+
 ```js
 // 实现方：定义一个切换组件（比「三」更通用的实现）：
 const <Toggle> = ({popup, children: child}) => (
@@ -75,7 +78,7 @@ const <Toggle> = ({popup, children: child}) => (
     {child.props.children}
     <Element
       component={popup}
-      isOpen={isOpen}
+      isOpen={isOpen} // 覆盖并控制 popup 显示
       onOpen={handleOpen}
     />
   </Element>
@@ -83,6 +86,6 @@ const <Toggle> = ({popup, children: child}) => (
 
 // 调用方：无论内外（调用方或实现方），属性都会传递，事件都会触发
 <Toggle popup={<Tooltip placement='top' onOpen={} />}>
-  <Button ghost onClick={} />
+  <Button ghost onClick={} /> // 先执行 onClick
 </Toggle>
 ```
