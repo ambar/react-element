@@ -33,11 +33,11 @@ import Element from 'react-element'
 
 ### 二、多个组件共用相同 DOM 元素
 
-如一个组件有 Item 和 ItemInner 两层结构，Item + Item 有并列样式，ItemInner 有 `padding`，需要替换外层的元素为链接时。
+如一个组件有 Item > ItemInner 两层结构，Item + Item 有并列样式，ItemInner 有 `padding`，需要替换外层的元素为链接时。
 
 ```js
 // 一种组件两种特性
-<ListItem component={Link} />
+<ListItem component={Link} /> // => <a class={ListItem}><div class={ListItemContent}>...</
 // 夸张的
 <ListItem component={<Card component={Link} />} />
 // 好玩的
@@ -73,19 +73,19 @@ const <Toggle> = ({popup, children: child}) => (
   ...
   <Element
     component={child}
-    onClick={handleClick}
+    onClick={handleClick} // 自动传播的 onClick
   >
     {child.props.children}
     <Element
       component={popup}
-      isOpen={isOpen} // 覆盖并控制 popup 显示
-      onOpen={handleOpen}
+      isOpen={isOpen} // 覆盖的属性，控制了 popup 显示
+      onOpen={handleOpen} // 自动传播的 onOpen
     />
   </Element>
 )
 
 // 调用方：无论内外（调用方或实现方），属性都会传递，事件都会触发
 <Toggle popup={<Tooltip placement='top' onOpen={} />}>
-  <Button ghost onClick={} /> // 先执行 onClick
+  <Button ghost onClick={} /> // 先执行的 onClick
 </Toggle>
 ```
