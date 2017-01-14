@@ -1,6 +1,6 @@
 # 元素替换
 
-合并 createElement 与 cloneElement 使用 😉
+合并 createElement 与 cloneElement 的使用 😉
 
 
 ## 基本用法
