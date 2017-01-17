@@ -90,6 +90,19 @@ describe('<Element />', () => {
     expect(element).toBe(null)
   })
 
+  it('should render children when `component` is null or false', () => {
+    const shouldAddWrapper = false
+    const {element} = mount(
+      <Element component={shouldAddWrapper && 'div'}>
+        <Element component={null}>
+          <span>span</span>
+        </Element>
+      </Element>
+    )
+
+    expect(element.tagName).toBe('SPAN')
+  })
+
   it('should keep classes', () => {
     const {element} = mount(
       <Element component={<span className='a' />} className='b' />

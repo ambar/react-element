@@ -92,11 +92,21 @@ const <Toggle> = ({popup, children: child}) => (
 
 ## FAQ
 
-`ref` 处理：
+**`ref` 处理**
 
 ```js
 // 原生标签使用 `onRef` 获取元素引用
 <Element component='span' onRef={el => ...} />
 // 构造函数和实例也能自动传递 `onRef` —— Element 会传递任意的 `on***` handler
 <Element component={MyComponent} onRef={handleRef} />
+```
+
+**`component={null}` 的含义是什么？**
+
+返回 children，不生成容器元素：
+
+```js
+<Element component={null}>
+  <span>span</span>
+</Element>
 ```
