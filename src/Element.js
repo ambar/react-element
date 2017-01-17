@@ -1,6 +1,6 @@
 /* eslint prefer-rest-params: 0 */
 import cx from 'classnames'
-import {cloneElement, createElement, PropTypes} from 'react'
+import {Children, cloneElement, createElement, isValidElement, PropTypes} from 'react'
 
 const reEvent = /^on\w+$/
 const isFunction = f => typeof f === 'function'
@@ -44,7 +44,7 @@ const Element = ({component, children, ...ownProps}) => {
     return createElement(component, ownProps, children)
   } else if (type === 'function') {
     return createElement(component, ownProps, children)
-  } else if (type === 'object') {
+  } else if (isValidElement(component)) {
     const childProps = mergeProps(component.props, ownProps)
     if (children) {
       return cloneElement(component, childProps, children)
@@ -52,11 +52,12 @@ const Element = ({component, children, ...ownProps}) => {
     return cloneElement(component, childProps)
   }
 
-  return null
+  return children ? Children.only(children) : null
 }
 
 Element.propTypes = {
   onRef: PropTypes.func,
+  children: PropTypes.node,
   component: PropTypes.oneOfType([
     PropTypes.element,
     PropTypes.string,
