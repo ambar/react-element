@@ -89,3 +89,14 @@ const <Toggle> = ({popup, children: child}) => (
   <Button ghost onClick={} /> // 先执行的 onClick
 </Toggle>
 ```
+
+## FAQ
+
+`ref` 处理：
+
+```js
+// 原生标签使用 `onRef` 获取元素引用
+<Element component='span' onRef={el => ...} />
+// 构造函数和实例也能自动传递 `onRef` —— Element 会传递任意的 `on***` handler
+<Element component={MyComponent} onRef={handleRef} />
+```

@@ -1,6 +1,6 @@
 /* eslint prefer-rest-params: 0 */
 import cx from 'classnames'
-import {cloneElement, createElement} from 'react'
+import {cloneElement, createElement, PropTypes} from 'react'
 
 const reEvent = /^on\w+$/
 const isFunction = f => typeof f === 'function'
@@ -34,10 +34,15 @@ const mergeProps = (destProps, srcProps) => {
  *   // 实例替换
  *   <Element component={<Link to='/' />}>text</Element>
  */
-const Element = (props) => {
-  const {component, children, ...ownProps} = props
+const Element = ({component, children, ...ownProps}) => {
   const type = typeof component
-  if (['string', 'function'].includes(type)) {
+  if (type === 'string') {
+    if (ownProps.onRef) {
+      ownProps.ref = ownProps.onRef
+      delete ownProps.onRef
+    }
+    return createElement(component, ownProps, children)
+  } else if (type === 'function') {
     return createElement(component, ownProps, children)
   } else if (type === 'object') {
     const childProps = mergeProps(component.props, ownProps)
@@ -48,6 +53,15 @@ const Element = (props) => {
   }
 
   return null
+}
+
+Element.propTypes = {
+  onRef: PropTypes.func,
+  component: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.string,
+    PropTypes.func,
+  ]),
 }
 
 export default Element

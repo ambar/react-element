@@ -161,4 +161,51 @@ describe('<Element />', () => {
 
     expect(element.textContent).toBe('toggle:popup')
   })
+
+  it('should handle onRef when `component` is tag', () => {
+    let span = null
+    mount(
+      <Element
+        component={'span'}
+        onRef={el => span = el}
+      />
+    )
+
+    expect(span instanceof HTMLElement).toBe(true)
+  })
+
+  it('should handle onRef when `component` is constructor', () => {
+    const Span = ({onRef}) => (
+      <span ref={onRef} />
+    )
+
+    let span = null
+    mount(
+      <Element
+        component={Span}
+        onRef={el => span = el}
+      />
+    )
+
+    expect(span instanceof HTMLElement).toBe(true)
+  })
+
+  it('should handle onRef when `component` is instance', () => {
+    const Span = ({onRef}) => (
+      <span ref={onRef} />
+    )
+
+    let span = null
+    const handleRef = jest.fn(el => span = el)
+
+    mount(
+      <Element
+        component={<Span onRef={handleRef} />}
+        onRef={handleRef}
+      />
+    )
+
+    expect(handleRef).toHaveBeenCalledTimes(2)
+    expect(span instanceof HTMLElement).toBe(true)
+  })
 })
