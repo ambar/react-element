@@ -1,6 +1,7 @@
 /* eslint prefer-rest-params: 0 */
 import cx from 'classnames'
-import {Children, cloneElement, createElement, isValidElement, PropTypes} from 'react'
+import PropTypes from 'prop-types'
+import {Children, cloneElement, createElement, isValidElement} from 'react'
 
 const reEvent = /^on\w+$/
 const isFunction = f => typeof f === 'function'
