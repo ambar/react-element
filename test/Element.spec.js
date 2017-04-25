@@ -2,7 +2,7 @@
 import React, {Component} from 'react'
 import {findDOMNode} from 'react-dom'
 import TestUtils from 'react-dom/test-utils'
-import StatelessElement from './Element'
+import StatelessElement from '../src/Element'
 
 const {
   renderIntoDocument,
