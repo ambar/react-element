@@ -2,6 +2,10 @@
 
 合并 createElement 与 cloneElement 的使用 😉
 
+[![build status](https://badgen.net/travis/ambar/react-element)](https://travis-ci.org/ambar/react-element)
+[![npm version](https://badgen.net/npm/v/react-element)](https://www.npmjs.com/package/react-element)
+[![minzipped size](https://badgen.net/bundlephobia/minzip/react-element)](https://bundlephobia.com/result?p=react-element)
+
 
 ## 基本用法
 
